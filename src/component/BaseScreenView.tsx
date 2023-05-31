@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, StyleProp, ViewStyle } from "react-native";
 import React from "react";
 import Colors from "../theme/colors";
 
@@ -7,7 +7,7 @@ const BaseScreenView = ({
   style,
 }: {
   children: any;
-  style?: any;
+  style?: StyleProp<ViewStyle> | undefined;
 }) => {
   return (
     <View style={[{ backgroundColor: Colors.background }, style]}>
