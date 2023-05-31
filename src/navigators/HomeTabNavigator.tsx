@@ -54,7 +54,7 @@ const HomeTabNavigator = () => {
       screenOptions={({ route }): BottomTabNavigationOptions => ({
         tabBarIcon: ({ focused }): React.ReactNode => {
           const routeData = TabRoutesData.find(
-            (item) => item.key === route.name,
+            (item) => item.title === route.name,
           );
           const iconColor = focused ? Colors.title : Colors.text;
 
@@ -64,11 +64,13 @@ const HomeTabNavigator = () => {
         },
         tabBarInactiveTintColor: Colors.text,
         tabBarActiveTintColor: Colors.title,
+        tabBarActiveBackgroundColor: Colors.secondary,
+        tabBarInactiveBackgroundColor: Colors.secondary,
       })}>
       {TabRoutesData.map((tabRouteData) => (
         <Tab.Screen
           key={tabRouteData.key}
-          name={tabRouteData.key}
+          name={tabRouteData.title}
           component={HomeScreen}
         />
       ))}

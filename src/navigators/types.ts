@@ -9,7 +9,7 @@ export enum HomeTabNavigatorRoutes {
 
 export interface HomeTabNavigatorRoutesData {
   key: HomeTabNavigatorRoutes;
-  title: String;
+  title: string;
   icon: ImageSourcePropType;
   component: any;
 }
