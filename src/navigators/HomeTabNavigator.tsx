@@ -6,12 +6,7 @@ import {
 } from "@react-navigation/bottom-tabs";
 import { HomeTabNavigatorRoutes, HomeTabNavigatorRoutesData } from "./types";
 import Colors from "../theme/colors";
-
-const HomeScreen = (): JSX.Element => (
-  <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-    <Text>{"Home"}</Text>
-  </View>
-);
+import HomeScreen from "../screen/HomeScreen";
 
 const SettingsScreen = (): JSX.Element => (
   <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -52,6 +47,10 @@ const HomeTabNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }): BottomTabNavigationOptions => ({
+        headerStyle: {
+          backgroundColor: Colors.secondary,
+        },
+        tabBarStyle: { backgroundColor: Colors.secondary },
         tabBarIcon: ({ focused }): React.ReactNode => {
           const routeData = TabRoutesData.find(
             (item) => item.title === route.name,

@@ -67,6 +67,7 @@ function App(): JSX.Element {
 
   return (
     <NavigationContainer>
+      <StatusBar barStyle={"light-content"} />
       <HomeTabNavigator />
     </NavigationContainer>
   );
