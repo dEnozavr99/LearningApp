@@ -1,10 +1,12 @@
 import { View, Text } from "react-native";
 import React from "react";
+import BaseScreenView from "../component/BaseScreenView";
 
 const HomeScreen = (): JSX.Element => (
-  <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+  <BaseScreenView
+    style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
     <Text>{"Home"}</Text>
-  </View>
+  </BaseScreenView>
 );
 
 export default HomeScreen;
