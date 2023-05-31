@@ -70,7 +70,7 @@ const HomeTabNavigator = () => {
         <Tab.Screen
           key={tabRouteData.key}
           name={tabRouteData.title}
-          component={HomeScreen}
+          component={tabRouteData.component}
         />
       ))}
     </Tab.Navigator>
