@@ -1,6 +1,6 @@
 import { View, Text } from "react-native";
 import React from "react";
-import BaseScreenView from "../component/BaseScreenView";
+import BaseScreenView from "../../component/BaseScreenView";
 
 const HomeScreen = (): JSX.Element => (
   <BaseScreenView

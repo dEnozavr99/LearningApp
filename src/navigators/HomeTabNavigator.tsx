@@ -6,7 +6,7 @@ import {
 } from "@react-navigation/bottom-tabs";
 import { HomeTabNavigatorRoutes, HomeTabNavigatorRoutesData } from "./types";
 import Colors from "../theme/colors";
-import HomeScreen from "../screen/HomeScreen";
+import HomeScreen from "../screen/HomeScreen/HomeScreen";
 
 const SettingsScreen = (): JSX.Element => (
   <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
