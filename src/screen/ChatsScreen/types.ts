@@ -6,7 +6,7 @@ export interface IChatItem {
 }
 
 export interface Message {
-  sender: MessageSender;
+  author: MessageSender;
   text: string;
 }
 

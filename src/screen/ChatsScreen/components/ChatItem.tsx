@@ -9,7 +9,10 @@ const ChatItem = ({ icon, title, messageCount }: IChatItem) => {
   const navigation = useNavigation();
 
   const onPress = () => {
-    navigation.navigate("Chat");
+    navigation.navigate("Chat", {
+      icon,
+      title,
+    });
   };
 
   return (
