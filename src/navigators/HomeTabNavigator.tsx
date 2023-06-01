@@ -8,7 +8,7 @@ import { HomeTabNavigatorRoutes, HomeTabNavigatorRoutesData } from "./types";
 import Colors from "../theme/colors";
 import HomeScreen from "../screen/HomeScreen/HomeScreen";
 import Header from "../component/Header";
-import MaterialsScreen from "../screen/MaterialsScreen/MaterialsScreen";
+import MaterialsStackNavigator from "./MaterialsStackNavigator";
 
 const SettingsScreen = (): JSX.Element => (
   <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -27,7 +27,7 @@ const TabRoutesData: HomeTabNavigatorRoutesData[] = [
     key: HomeTabNavigatorRoutes.MATERIALS,
     title: "Матеріали",
     icon: require("../assets/icons/materials.png"),
-    component: MaterialsScreen,
+    component: MaterialsStackNavigator,
   },
   {
     key: HomeTabNavigatorRoutes.CALENDAR,
