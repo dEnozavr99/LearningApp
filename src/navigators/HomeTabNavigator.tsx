@@ -9,6 +9,7 @@ import Colors from "../theme/colors";
 import HomeScreen from "../screen/HomeScreen/HomeScreen";
 import Header from "../component/Header";
 import MaterialsStackNavigator from "./MaterialsStackNavigator";
+import CalendarStackNavigator from "./CalendarStackNavigator";
 
 const SettingsScreen = (): JSX.Element => (
   <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -33,7 +34,7 @@ const TabRoutesData: HomeTabNavigatorRoutesData[] = [
     key: HomeTabNavigatorRoutes.CALENDAR,
     title: "Календар",
     icon: require("../assets/icons/calendar.png"),
-    component: SettingsScreen,
+    component: CalendarStackNavigator,
   },
   {
     key: HomeTabNavigatorRoutes.CHAT,
