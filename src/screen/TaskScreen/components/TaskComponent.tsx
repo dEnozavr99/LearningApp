@@ -55,8 +55,9 @@ const TaskComponent = ({ item }: { item: Task }) => {
         style={{ height: 3, width: "100%", backgroundColor: Colors.title }}
       />
       <View style={{ gap: 8 }}>
-        {answers?.map((answer) => (
+        {answers?.map((answer, index) => (
           <AnswerComponent
+            key={`${answer.text}_${index}`}
             title={answer.text}
             isSelected={answer.selected}
             toggleSelected={pickAnswer}
