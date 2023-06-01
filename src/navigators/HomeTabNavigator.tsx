@@ -10,12 +10,7 @@ import HomeScreen from "../screen/HomeScreen/HomeScreen";
 import Header from "../component/Header";
 import MaterialsStackNavigator from "./MaterialsStackNavigator";
 import CalendarStackNavigator from "./CalendarStackNavigator";
-
-const SettingsScreen = (): JSX.Element => (
-  <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-    <Text>{"Settings"}</Text>
-  </View>
-);
+import ChatStackNavigator from "./ChatStackNavigator";
 
 const TabRoutesData: HomeTabNavigatorRoutesData[] = [
   {
@@ -40,7 +35,7 @@ const TabRoutesData: HomeTabNavigatorRoutesData[] = [
     key: HomeTabNavigatorRoutes.CHAT,
     title: "Чат",
     icon: require("../assets/icons/chat.png"),
-    component: SettingsScreen,
+    component: ChatStackNavigator,
   },
 ];
 
