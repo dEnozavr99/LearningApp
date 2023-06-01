@@ -1,6 +1,7 @@
-import { View, Text, TouchableWithoutFeedback } from "react-native";
+import { View, Text, TouchableWithoutFeedback, Animated } from "react-native";
 import React from "react";
 import Colors from "../../../theme/colors";
+import { Answer } from "../types";
 
 const CheckBox = ({
   title,
@@ -9,10 +10,16 @@ const CheckBox = ({
 }: {
   title: string;
   isSelected: boolean;
-  toggleSelected: () => void;
+  toggleSelected: (answer: Answer) => void;
 }) => {
+  const onPress = () => {
+    const answer: Answer = { text: title, selected: isSelected };
+
+    toggleSelected(answer);
+  };
+
   return (
-    <TouchableWithoutFeedback onPress={toggleSelected}>
+    <TouchableWithoutFeedback onPress={onPress}>
       <View
         style={{
           flexDirection: "row",

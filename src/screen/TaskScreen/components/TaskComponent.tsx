@@ -21,23 +21,21 @@ const TaskComponent = ({ item }: { item: Task }) => {
     const answerToPick = answers?.find((item) => item.text === answer.text);
 
     let updated: any[] | undefined = [];
-    // if (item.type === TaskType.ONE_ANSWER) {
-    //   const previouslySelected = answers?.find((item) => item.selected);
 
-    //   const updated = answers?.map((item) => {
-    //     return {
-    //       ...item,
-    //       selected:
-    //         item.text == previouslySelected?.text ? false : item.selected,
-    //     };
-    //   });
+    if (item.type === TaskType.ONE_ANSWER) {
+      updated = answers?.map((item) => {
+        return { ...item, selected: answerToPick?.text === item.text };
+      });
+    } else if (item.type === TaskType.MULTIPLE) {
+      updated = answers?.map((item) => {
+        return {
+          ...item,
+          selected: answerToPick?.text === item.text ? true : item.selected,
+        };
+      });
+    }
 
-    //   setAnswers(updated);
-    // }
-
-    updated = answers?.map((item) => {
-      return { ...item, selected: answerToPick?.text == item.text };
-    });
+    setAnswers(updated);
   };
 
   return (
@@ -60,7 +58,7 @@ const TaskComponent = ({ item }: { item: Task }) => {
           <AnswerComponent
             title={answer.text}
             isSelected={answer.selected}
-            toggleSelected={() => {}}
+            toggleSelected={pickAnswer}
           />
         ))}
         {answers == null && (
