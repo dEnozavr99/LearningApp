@@ -40,13 +40,13 @@ const TopicItem = ({ item }: { item: Topic }) => {
   };
 
   return (
-    <TouchableWithoutFeedback onPress={toggleExpanded}>
-      <View
-        style={{
-          width: "100%",
-          borderRadius: 12,
-          backgroundColor: Colors.secondary,
-        }}>
+    <View
+      style={{
+        width: "100%",
+        borderRadius: 12,
+        backgroundColor: Colors.secondary,
+      }}>
+      <TouchableWithoutFeedback onPress={toggleExpanded}>
         <View
           style={{
             justifyContent: "center",
@@ -57,50 +57,50 @@ const TopicItem = ({ item }: { item: Topic }) => {
           }}>
           <Text style={{ color: Colors.text }}>{item.title}</Text>
         </View>
-        <View
-          style={{
-            paddingHorizontal: 8,
-            paddingBottom: 8,
-            paddingTop: 16,
-            gap: 15,
-            height: expanded ? "auto" : CellHeight,
-            display: expanded ? "flex" : "none",
-          }}>
-          {item.materials.map((material) => {
-            const imageSource = getMaterialIcon(material.type);
+      </TouchableWithoutFeedback>
+      <View
+        style={{
+          paddingHorizontal: 8,
+          paddingBottom: 8,
+          paddingTop: 16,
+          gap: 15,
+          height: expanded ? "auto" : CellHeight,
+          display: expanded ? "flex" : "none",
+        }}>
+        {item.materials.map((material) => {
+          const imageSource = getMaterialIcon(material.type);
 
-            return (
+          return (
+            <View
+              key={`${item.title}_${material.type}_${material.title}`}
+              style={{ gap: 8 }}>
               <View
-                key={`${item.title}_${material.type}_${material.title}`}
-                style={{ gap: 8 }}>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    // justifyContent: "center",
-                    alignItems: "center",
-                    gap: 10,
-                  }}>
-                  <Image
-                    source={imageSource}
-                    style={{ tintColor: Colors.text, width: 24, height: 24 }}
-                  />
-                  <Text style={{ color: Colors.text, fontSize: 14 }}>
-                    {material.title}
-                  </Text>
-                </View>
-                <View
-                  style={{
-                    backgroundColor: Colors.title,
-                    width: "100%",
-                    height: 3,
-                  }}
+                style={{
+                  flexDirection: "row",
+                  // justifyContent: "center",
+                  alignItems: "center",
+                  gap: 10,
+                }}>
+                <Image
+                  source={imageSource}
+                  style={{ tintColor: Colors.text, width: 24, height: 24 }}
                 />
+                <Text style={{ color: Colors.text, fontSize: 14 }}>
+                  {material.title}
+                </Text>
               </View>
-            );
-          })}
-        </View>
+              <View
+                style={{
+                  backgroundColor: Colors.title,
+                  width: "100%",
+                  height: 3,
+                }}
+              />
+            </View>
+          );
+        })}
       </View>
-    </TouchableWithoutFeedback>
+    </View>
   );
 };
 
