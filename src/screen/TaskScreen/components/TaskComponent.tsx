@@ -30,7 +30,8 @@ const TaskComponent = ({ item }: { item: Task }) => {
       updated = answers?.map((item) => {
         return {
           ...item,
-          selected: answerToPick?.text === item.text ? true : item.selected,
+          selected:
+            answerToPick?.text === item.text ? !item.selected : item.selected,
         };
       });
     }

@@ -88,7 +88,6 @@ const TopicItem = ({ item }: { item: Topic }) => {
               <View
                 style={{
                   flexDirection: "row",
-                  // justifyContent: "center",
                   alignItems: "center",
                   gap: 10,
                 }}>
