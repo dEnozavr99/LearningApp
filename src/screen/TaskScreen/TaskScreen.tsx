@@ -1,9 +1,18 @@
-import { View, Text, FlatList } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  KeyboardAvoidingView,
+  TouchableOpacity,
+  Alert,
+} from "react-native";
 import React from "react";
 import BaseScreenView from "../../component/BaseScreenView";
 import CourseHeader from "../../component/CourseHeader";
 import TaskComponent from "./components/TaskComponent";
 import { Task, TaskType } from "./types";
+import { useNavigation } from "@react-navigation/core";
+import Colors from "../../theme/colors";
 
 const TASKS_DATA: Task[] = [
   {
@@ -58,6 +67,25 @@ const TASKS_DATA: Task[] = [
 ];
 
 const TaskScreen = () => {
+  const navigation = useNavigation();
+
+  const onSubmit = () => {
+    Alert.alert(
+      "Відправити відповідь",
+      "Ваша відпвідь буде перевірена вчителем",
+      [
+        {
+          text: "Так",
+          style: "destructive",
+          onPress: () => {
+            navigation.goBack();
+          },
+        },
+        { text: "Ні", style: "cancel" },
+      ],
+    );
+  };
+
   return (
     <BaseScreenView
       style={{
@@ -70,13 +98,30 @@ const TaskScreen = () => {
         title="Геометрія"
         icon={require("../../assets/icons/geometry.png")}
       />
-      <FlatList
-        contentContainerStyle={{
-          gap: 8,
+      <KeyboardAvoidingView>
+        <FlatList
+          contentContainerStyle={{
+            gap: 8,
+          }}
+          data={TASKS_DATA}
+          renderItem={({ item }) => <TaskComponent item={item} />}
+        />
+      </KeyboardAvoidingView>
+      <TouchableOpacity
+        style={{
+          backgroundColor: Colors.primary,
+          justifyContent: "center",
+          alignItems: "center",
+          borderRadius: 12,
+          borderWidth: 3,
+          borderColor: Colors.secondary,
+          padding: 16,
         }}
-        data={TASKS_DATA}
-        renderItem={({ item }) => <TaskComponent item={item} />}
-      />
+        onPress={onSubmit}>
+        <Text style={{ color: Colors.title, fontSize: 16 }}>
+          {"Відправити"}
+        </Text>
+      </TouchableOpacity>
     </BaseScreenView>
   );
 };
