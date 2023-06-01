@@ -1,11 +1,19 @@
-import { View, Text, Image, TouchableWithoutFeedback } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  TouchableWithoutFeedback,
+  TouchableOpacity,
+} from "react-native";
 import React, { useState } from "react";
 import { MaterialType, Topic } from "../types";
 import Colors from "../../../theme/colors";
+import { useNavigation } from "@react-navigation/core";
 
 const CellHeight = 54;
 
 const TopicItem = ({ item }: { item: Topic }) => {
+  const navigation = useNavigation();
   const [expanded, setExpanded] = useState(false);
 
   const getMaterialIcon = (type: MaterialType) => {
@@ -71,9 +79,12 @@ const TopicItem = ({ item }: { item: Topic }) => {
           const imageSource = getMaterialIcon(material.type);
 
           return (
-            <View
+            <TouchableOpacity
               key={`${item.title}_${material.type}_${material.title}`}
-              style={{ gap: 8 }}>
+              style={{ gap: 8 }}
+              onPress={() => {
+                navigation.navigate("Task");
+              }}>
               <View
                 style={{
                   flexDirection: "row",
@@ -96,7 +107,7 @@ const TopicItem = ({ item }: { item: Topic }) => {
                   height: 3,
                 }}
               />
-            </View>
+            </TouchableOpacity>
           );
         })}
       </View>
