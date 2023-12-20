@@ -1,11 +1,20 @@
-import { View, Text } from "react-native";
-import React from "react";
+import {
+  View,
+  TextInput,
+  KeyboardAvoidingView,
+  TouchableOpacity,
+  Image,
+} from "react-native";
+import React, { useEffect, useState } from "react";
+import { FlatList } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/core";
+
 import BaseScreenView from "../../component/BaseScreenView";
 import CourseHeader from "../../component/CourseHeader";
-import { useNavigation } from "@react-navigation/core";
-import { FlatList } from "react-native-gesture-handler";
-import { Message } from "../ChatsScreen/types";
 import MessageItem from "./components/MessageItem";
+
+import { Message } from "../ChatsScreen/types";
+import Colors from "../../theme/colors";
 
 const MESSAGES_DATA: Message[] = [
   {
@@ -41,17 +50,77 @@ const MESSAGES_DATA: Message[] = [
 const ChatScreen = ({ route }) => {
   const navigation = useNavigation();
 
+  const [messages, setMessages] = useState(MESSAGES_DATA);
+  const [text, setText] = useState("");
+
   const { icon, title } = route.params;
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerTitle: () => <CourseHeader icon={icon} title={title} />,
+    });
+  }, []);
+
+  const addMessage = () => {
+    if (text === "") {
+      return;
+    }
+
+    setMessages((currentMessages) => [
+      ...currentMessages,
+      {
+        author: {
+          fullName: "Андрій Яценко",
+          icon: require("../../assets/icons/andiy.png"),
+        },
+        text: text,
+      },
+    ]);
+
+    setText("");
+  };
 
   return (
     <BaseScreenView
-      style={{ flex: 1, gap: 16, paddingTop: 8, paddingHorizontal: 16 }}>
-      <CourseHeader icon={icon} title={title} />
-      <FlatList
-        contentContainerStyle={{ gap: 28 }}
-        data={MESSAGES_DATA}
-        renderItem={({ item }) => <MessageItem {...item} />}
-      />
+      style={{ flex: 1, paddingTop: 8 }}
+      homeBarBackgroundColor={Colors.primary}>
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding" enabled>
+        <View style={{ flex: 1, gap: 16, paddingHorizontal: 16 }}>
+          <FlatList
+            contentContainerStyle={{ gap: 28 }}
+            data={messages}
+            renderItem={({ item }) => <MessageItem {...item} />}
+          />
+        </View>
+
+        <View
+          style={{
+            flexDirection: "row",
+            width: "100%",
+            backgroundColor: Colors.primary,
+            justifyContent: "space-between",
+            paddingHorizontal: 8,
+            height: 55,
+            alignItems: "center",
+          }}>
+          <TextInput
+            style={{
+              height: 45,
+              color: Colors.text,
+            }}
+            placeholder="Введіть повідомлення..."
+            placeholderTextColor={Colors.secondary}
+            value={text}
+            onChangeText={setText}
+          />
+          <TouchableOpacity onPress={addMessage}>
+            <Image
+              source={require("../../assets/icons/send.png")}
+              style={{ width: 45, height: 45 }}
+            />
+          </TouchableOpacity>
+        </View>
+      </KeyboardAvoidingView>
     </BaseScreenView>
   );
 };
