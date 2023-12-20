@@ -1,18 +1,26 @@
-import { View, Text, StyleProp, ViewStyle } from "react-native";
+import { View, StyleProp, ViewStyle, SafeAreaView } from "react-native";
 import React from "react";
 import Colors from "../theme/colors";
 
 const BaseScreenView = ({
   children,
   style,
+  homeBarBackgroundColor,
 }: {
   children: any;
   style?: StyleProp<ViewStyle> | undefined;
+  homeBarBackgroundColor?: string | undefined;
 }) => {
   return (
-    <View style={[{ backgroundColor: Colors.background }, style]}>
-      {children}
-    </View>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: homeBarBackgroundColor ?? Colors.background,
+      }}>
+      <View style={[{ backgroundColor: Colors.background }, style]}>
+        {children}
+      </View>
+    </SafeAreaView>
   );
 };
 
