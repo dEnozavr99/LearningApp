@@ -20,7 +20,7 @@ const MESSAGES_DATA: Message[] = [
   {
     author: {
       fullName: "Андрій Яценко",
-      icon: require("../../assets/icons/andiy.png"),
+      icon: require("../../assets/icons/andriy.png"),
     },
     text: "Добрий день, учні. Темою сьогоднішнього уроку будуть “Площини”",
   },
@@ -34,14 +34,14 @@ const MESSAGES_DATA: Message[] = [
   {
     author: {
       fullName: "Олег Красій",
-      icon: require("../../assets/icons/andiy.png"),
+      icon: require("../../assets/icons/andriy.png"),
     },
     text: "Добрий день, не зможу підʼєднатися до уроку, через стан здоровʼя. Довідку від лікаря вже вислав вам на пошту.",
   },
   {
     author: {
       fullName: "Андрій Яценко",
-      icon: require("../../assets/icons/andiy.png"),
+      icon: require("../../assets/icons/andriy.png"),
     },
     text: "Гаразд Олеже, бачив ваш документ. Решта підʼєднуймося.",
   },
@@ -71,7 +71,7 @@ const ChatScreen = ({ route }) => {
       {
         author: {
           fullName: "Андрій Яценко",
-          icon: require("../../assets/icons/andiy.png"),
+          icon: require("../../assets/icons/andriy.png"),
         },
         text: text,
       },
