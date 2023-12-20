@@ -8,9 +8,9 @@ import { HomeTabNavigatorRoutes, HomeTabNavigatorRoutesData } from "./types";
 import Colors from "../theme/colors";
 import HomeScreen from "../screen/HomeScreen/HomeScreen";
 import Header from "../component/Header";
-import MaterialsStackNavigator from "./MaterialsStackNavigator";
-import CalendarStackNavigator from "./CalendarStackNavigator";
-import ChatStackNavigator from "./ChatStackNavigator";
+import MaterialsScreen from "../screen/MaterialsScreen/MaterialsScreen";
+import CalendarScreen from "../screen/CalendarScreen/CalendarScreen";
+import ChatsScreen from "../screen/ChatsScreen/ChatsScreen";
 
 const TabRoutesData: HomeTabNavigatorRoutesData[] = [
   {
@@ -23,19 +23,19 @@ const TabRoutesData: HomeTabNavigatorRoutesData[] = [
     key: HomeTabNavigatorRoutes.MATERIALS,
     title: "Матеріали",
     icon: require("../assets/icons/materials.png"),
-    component: MaterialsStackNavigator,
+    component: MaterialsScreen,
   },
   {
     key: HomeTabNavigatorRoutes.CALENDAR,
     title: "Календар",
     icon: require("../assets/icons/calendar.png"),
-    component: CalendarStackNavigator,
+    component: CalendarScreen,
   },
   {
     key: HomeTabNavigatorRoutes.CHAT,
     title: "Чат",
     icon: require("../assets/icons/chat.png"),
-    component: ChatStackNavigator,
+    component: ChatsScreen,
   },
 ];
 
@@ -51,7 +51,8 @@ const HomeTabNavigator = () => {
         headerStyle: {
           backgroundColor: Colors.secondary,
         },
-        tabBarStyle: { backgroundColor: Colors.secondary },
+        tabBarStyle: { backgroundColor: Colors.secondary, height: 90 },
+        tabBarLabelStyle: { fontSize: 18 },
         tabBarIcon: ({ focused }): React.ReactNode => {
           const routeData = TabRoutesData.find(
             (item) => item.title === route.name,
@@ -59,7 +60,10 @@ const HomeTabNavigator = () => {
           const iconColor = focused ? Colors.title : Colors.text;
 
           return (
-            <Image source={routeData!.icon} style={{ tintColor: iconColor }} />
+            <Image
+              source={routeData!.icon}
+              style={{ tintColor: iconColor, height: 28 }}
+            />
           );
         },
         tabBarInactiveTintColor: Colors.text,
