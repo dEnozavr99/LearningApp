@@ -23,6 +23,7 @@ const Course = ({
         height: 150,
         borderRadius: 12,
         gap: 30,
+        flex: 1,
       }}>
       <Image source={icon} />
       <Text style={{ color: Colors.text }}>{title}</Text>
